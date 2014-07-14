@@ -1,4 +1,17 @@
 # Application dependencies
 
 require:
-    - play
+    - play 1.2.7
+    - org.apache.poi -> poi 3.10-FINAL
+    - org.apache.poi -> poi-ooxml 3.10-FINAL
+    - org.apache.poi -> ooxml-schemas 1.1
+    - jp.co.flect -> hypdf4j 0.9:
+        exclude:
+            - com.fasterxml.jackson.core -> *
+
+repositories:
+    - flect:
+        type:   iBiblio
+        root:   "http://flect.github.io/maven-repo/"
+        contains:
+            - jp.co.flect -> *

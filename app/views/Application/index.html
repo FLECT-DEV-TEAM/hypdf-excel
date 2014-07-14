@@ -1,4 +1,70 @@
 #{extends 'main.html' /}
-#{set title:'Home' /}
+#{set 'moreStyles'}
+<link rel="stylesheet" media="screen" href="/public/javascripts/ext/excel2canvas/jquery.excel2canvas.css">
+<style>
+#{include 'webfont.html'/}
 
-#{welcome /}
+#forms-form {
+	position:absolute;
+	top: 0px;
+	left: -1000px;
+}
+#forms-iframe {
+	width:0px;
+	height:0px;
+	border:none;
+}
+#preview-excel {
+	position:relative;
+}
+
+#preview-excel canvas {
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:0;
+}
+
+</style>
+#{/set}
+#{set 'moreScripts'}
+<script src="/scripts/excel2pdf.js"></script>
+<script src="/public/javascripts/ext/excel2canvas/jquery.excel2canvas.js"></script>
+<script src="/public/javascripts/ext/excel2canvas/jquery.excel2chart.flotr2.js"></script>
+#{/set}
+#{set title:'HyPDF-Excel' /}
+
+<h1>Build PDF from Excel</h1>
+<h2>About</h2>
+<p>Build pdf file from uploaded Excel file.</p>
+<h2>Dependencies</h2>
+<p>This sample uses following service and libraries.</p>
+<ul>
+	<li><a href="http://www.hypdf.com/">HyPDF</a>: Web service for PDF genaration.</li>
+	<li><a href="https://github.com/shunjikonishi/hypdf4j">hypdf4j</a>: Java wrapper of HyPDF API</li>
+	<li><a href="https://github.com/shunjikonishi/excel2canvas">excel2canvas</a>: Java library to convert the Excel file to HTML.</li>
+</ul>
+<hr>
+<div id="forms">
+	<p>Upload your Excel file.</p>
+	<button id="forms-btnUpload">Upload Excel file</button>
+	<form id="forms-form" action="preview" method="post" enctype="multipart/form-data" target="forms-iframe">
+		<input type="file" name="file" id="forms-file">
+	</form>
+	<iframe id="forms-iframe" name="forms-iframe" src=""></iframe>
+</div>
+<hr>
+<div id="preview" style="display:none;">
+	<div>
+		<button id="preview-btnDownload">Download PDF</button>
+	</div>
+	<div id="preview-excel">
+		<canvas></canvas>
+	</div>
+</div>
+<script>
+var app;
+$(function() {
+	app = new flect.app.ExcelToPdf();
+})
+</script>

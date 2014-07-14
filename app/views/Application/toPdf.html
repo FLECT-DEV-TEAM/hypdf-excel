@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>HyPDF-Excel</title>
+<meta charset="utf-8">
+<link rel="stylesheet" media="screen" href="/public/javascripts/ext/excel2canvas/jquery.excel2canvas.css">
+<link rel="shortcut icon" type="image/png" href="/assets/images/favicon.png">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="/public/javascripts/ext/excel2canvas/jquery.excel2canvas.js"></script>
+<script src="/public/javascripts/ext/excel2canvas/jquery.excel2chart.flotr2.js"></script>
+</head>
+<body>
+
+
+<style>
+#{include 'webfont.html'/}
+#canvasHolder { position: absolute; left: 0; top: 0;}
+#excelCanvas { position:absolute;left:0;top:0;z-index:0;}
+</style>
+<script>
+$(function() {
+	var data = ${json.raw()};
+	$("#canvasHolder").excelToCanvas(data);
+
+});
+</script>
+<div id="canvasHolder">
+	<canvas id="excelCanvas"></canvas>
+</div>
+</body>
+</html>
+
