@@ -11,6 +11,8 @@ import jp.co.flect.excel2canvas.ExcelToCanvasBuilder;
 import jp.co.flect.excel2canvas.ExcelToCanvas;
 import jp.co.flect.hypdf.HyPDF;
 import jp.co.flect.hypdf.model.PdfResponse;
+import jp.co.flect.hypdf.model.HyPDFOption;
+import jp.co.flect.hypdf.model.LengthUnit;
 
 
 public class Application extends Controller {
@@ -48,11 +50,16 @@ public class Application extends Controller {
 		String password = System.getenv("HYPDF_PASSWORD");
 
 		HyPDF hypdf = new HyPDF(username, password);
+		HyPDFOption.HtmlToPdf option = new HyPDFOption.HtmlToPdf();
+		option.footer = new HyPDFOption.Footer();
+		option.footer.center = request.getBase();
+		option.margin_top = LengthUnit.inch(0.25);
+		option.margin_bottom = LengthUnit.inch(0.25);
+
 		hypdf.setTestMode(true);
 		String url = request.getBase() + "/topdf/" + id;
-		System.out.println(url);
 		try {
-			PdfResponse res = hypdf.htmlToPdf(url);
+			PdfResponse res = hypdf.htmlToPdf(url, option);
 			renderBinary(res.getContent(), "sample.pdf");
 		} catch (IOException e) {
 			error(e.getMessage());
