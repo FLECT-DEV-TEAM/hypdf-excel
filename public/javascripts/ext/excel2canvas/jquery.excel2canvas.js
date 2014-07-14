@@ -268,7 +268,9 @@
 				holder.append(img);
 			}
 		}
+console.log("test1: " + $.fn.excelToChart);
 		if (data.charts && $.fn.excelToChart) {
+console.log("test2: " + data.charts.length);
 			for (var i=0; i<data.charts.length; i++) {
 				var chart = data.charts[i],
 					options = {},

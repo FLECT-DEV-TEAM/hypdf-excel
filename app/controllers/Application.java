@@ -28,6 +28,8 @@ public class Application extends Controller {
 			ExcelToCanvasBuilder builder = new ExcelToCanvasBuilder();
 			builder.getFontManager().setMinchoFont("ipaexm");
 			builder.getFontManager().setGothicFont("ipaexg");
+			builder.setIncludeChart(true);
+			builder.setIncludePicture(true);
 
 			ExcelToCanvas canvas = builder.build(file);
 			result = canvas.toJson();

@@ -29,6 +29,7 @@
 #{/set}
 #{set 'moreScripts'}
 <script src="/scripts/excel2pdf.js"></script>
+<script src="/public/javascripts/ext/flotr2/flotr2.min.js"></script>
 <script src="/public/javascripts/ext/excel2canvas/jquery.excel2canvas.js"></script>
 <script src="/public/javascripts/ext/excel2canvas/jquery.excel2chart.flotr2.js"></script>
 #{/set}
@@ -46,8 +47,15 @@
 </ul>
 <hr>
 <div id="forms">
+	<h2>Demo!</h2>
 	<p>Upload your Excel file.</p>
 	<button id="forms-btnUpload">Upload Excel file</button>
+	<p>If you don't have well suited Excel file, download followings and upload it.</p>
+	<ul>
+		<li><a href="/public/samples/sample1.xlsx">Minutes of meetings(Japanese - 議事録)</a></li>
+		<li><a href="/public/samples/sample2.xlsx">Estimate sheet(Japanese - 見積書)</a></li>
+		<li><a href="/public/samples/sample3.xlsx">Chart sample</a></li>
+	</ul>
 	<form id="forms-form" action="preview" method="post" enctype="multipart/form-data" target="forms-iframe">
 		<input type="file" name="file" id="forms-file">
 	</form>
@@ -55,6 +63,7 @@
 </div>
 <hr>
 <div id="preview" style="display:none;">
+	<h2>Preview</h2>
 	<div>
 		<button id="preview-btnDownload">Download PDF</button>
 	</div>

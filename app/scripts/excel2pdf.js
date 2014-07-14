@@ -23,8 +23,9 @@ if (typeof(flect.app) == "undefined") flect.app = {};
 			if (ret.error) {
 				alert(ret.error);
 			} else {
-				$excel.excelToCanvas(ret);
 				$preview.show();
+				$excel.empty();
+				$excel.excelToCanvas(ret);
 			}
 		}
 		var $btnUpload = $("#forms-btnUpload"),
