@@ -18,7 +18,8 @@ import jp.co.flect.hypdf.model.LengthUnit;
 public class Application extends Controller {
 
 	public static void index() {
-		render();
+		String sessionId = session.getId();
+		render(sessionId);
 	}
 
 	public static void preview(File file) {

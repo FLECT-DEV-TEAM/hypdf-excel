@@ -67,6 +67,7 @@
 	<h2>Preview</h2>
 	<div>
 		<button id="preview-btnDownload">Download PDF</button>
+		<button id="preview-btnFull">Full screen</button>
 	</div>
 	<div id="preview-excel">
 		<canvas></canvas>
@@ -75,6 +76,7 @@
 <script>
 var app;
 $(function() {
-	app = new flect.app.ExcelToPdf();
+	var sessionId = "${sessionId}";
+	app = new flect.app.ExcelToPdf(sessionId);
 })
 </script>

@@ -3,7 +3,7 @@ if (typeof(flect.app) == "undefined") flect.app = {};
 
 
 (function ($) {
-	flect.app.ExcelToPdf = function() {
+	flect.app.ExcelToPdf = function(sessionId) {
 		function init() {
 			$btnUpload.click(function() {
 				$file.val(null).click();
@@ -16,6 +16,9 @@ if (typeof(flect.app) == "undefined") flect.app = {};
 			});
 			$btnDownload.click(function() {
 				window.open("/download");
+			});
+			$btnFull.click(function() {
+				window.open("/topdf/" + sessionId);
 			});
 		}
 		function preview(ret) {
@@ -33,6 +36,7 @@ if (typeof(flect.app) == "undefined") flect.app = {};
 			$form = $("#forms-form"),
 			$preview = $("#preview"),
 			$btnDownload = $("#preview-btnDownload"),
+			$btnFull = $("#preview-btnFull"),
 			$excel = $("#preview-excel");
 		init();
 
